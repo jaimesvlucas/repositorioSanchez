@@ -113,7 +113,7 @@ class UserController {
         if(move_uploaded_file($rutaTemp,$ruta)) {
   
           //Prepara el contenido del campo imgSrc
-          $imgSRC = "http://localhost/backendphp/images/".$nombreFoto;
+          $imgSRC = "http://localhost/repositorioSanchez/backendSanchez/images/".$nombreFoto;
   
           $eval = "UPDATE users SET imgSrc=? WHERE id=?";
           $peticion = $this->db->prepare($eval);

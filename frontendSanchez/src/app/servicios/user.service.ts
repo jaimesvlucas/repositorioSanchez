@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User, AccesoUsuario } from '../Clases/user';
 
-const url = 'http://localhost/backendphp/user/';
+const url = 'http://localhost/repositorioSanchez/backendSanchez/';
 @Injectable({
   providedIn: 'root'
 })
