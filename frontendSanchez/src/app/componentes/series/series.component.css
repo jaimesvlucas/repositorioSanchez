@@ -1,0 +1,20 @@
+.customBackground {
+  background-color: #202833;
+  min-height: 92vh;
+}
+.colorCustom {
+  color: #66fcf1;
+}
+
+.dropdown-menu{
+  width: 90%;
+}
+
+.dropdown-item{
+  color: white;
+}
+
+.dropdown-item:hover{
+  color: black;
+  background-color:#C5C6C8;
+}
