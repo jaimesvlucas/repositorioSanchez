@@ -1329,7 +1329,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nombre`, `apellidos`, `password`, `email`, `telefono`, `dni`, `imgSrc`) VALUES
-(2, 'jaime', 'sanchez', '$2y$10$/cCSYhvlBHjlEoIAU5P8Ie66g9TJYX4lvfs.nL.dfuGJy8eJsLpp6', 'jaime@gmail.com', 656919501, '06287129X', 'http://localhost/apiSanchez/app/images/p-2-1621717450.png');
+(2, 'jaime', 'sanchez', '$2y$10$/cCSYhvlBHjlEoIAU5P8Ie66g9TJYX4lvfs.nL.dfuGJy8eJsLpp6', 'jaime@gmail.com', 656919501, '06287129X', 'http://localhost/repositorioSanchez/backendSanchez/app/images/p-2-1621717450.png');
 
 --
 -- Indexes for dumped tables
