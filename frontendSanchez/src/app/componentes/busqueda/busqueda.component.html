@@ -1,28 +1,35 @@
 <div class="container-fluid customBackground text-white">
-    <h6 class="text-white my-3 mx-2">Peliculas <i class="fas fa-chevron-right"></i></h6>
+    <h6 class="text-white my-3 mx-2">Resultados de la busqueda "{{busqueda}}" <i class="fas fa-chevron-right"></i></h6>
     <div class="row d-flex justify-content-center align-items-center mx-2 my-2 h-25">
-        <div class="col my-2" *ngFor='let pelicula of peliculas'>
-            <div class="card contenedor" style="width: 16rem;">
-                <span class="flecha"><i class="fas fa-chevron-down"></i></span>
-                <img *ngIf='pelicula.backdrop_path!=null; else elseBlock' src="{{imageUrl}}{{pelicula.backdrop_path}}" class="card-img-top" alt="">
-                <ng-template #elseBlock> <img src="assets/imagenes/errorImage.png" class="card-img-top" alt=""> </ng-template>
-                <div class="card-body tag" (click)='verPelicula(pelicula.id)'>
-                    <p class="card-title my-1">{{pelicula.title}}<br>{{pelicula.release_date}}</p>
+    <div class="col my-2" *ngFor='let you of resultados'>
+        <div class="card contenedor" style="width: 16rem;">
+            <div *ngIf="you.tipo=='pelicula'; else elseBlock">
+            <button type="button" class="flecha dropdown-toggle" data-toggle="dropdown"></button>
+            <div class="dropdown-menu bg-dark  white-text text-center">
+                <div class="dropdown-item" (click)="aniadirTitulo(you.id,1)">Pendiente</div>
+                <div class="dropdown-item" (click)="aniadirTitulo(you.id,2)">Vista</div>
+            </div>
+            </div> 
+            <ng-template #elseBlock>
+            <div>
+                <button type="button" class="flecha dropdown-toggle" data-toggle="dropdown"></button>
+                <div class="dropdown-menu bg-dark  white-text text-center">
+                <div class="dropdown-item" (click)="aniadirTitulo(you.id,1)">Pendiente</div>
+                <div class="dropdown-item" (click)="aniadirTitulo(you.id,3)">Siguiendo</div>
+                <div class="dropdown-item" (click)="aniadirTitulo(you.id,2)">Vista</div>
                 </div>
-            </div>       
-        </div>
+            </div> 
+        </ng-template>
+            <img src="{{you.imagen}}" class="card-img-top" alt="">
+            <div class="card-body tag" (click)='verPelicula(you.id)' *ngIf="you.tipo=='pelicula'; else elseBlock2">
+                <p class="card-title my-1 pointer">{{you.titulo}}<br>{{you.fecha_salida}}
+            </div>
+            <ng-template #elseBlock2>
+                <div class="card-body tag" (click)='verSerie(you[i].id)'>
+                <p class="card-title my-1 pointer">{{you.titulo}}<br>{{you.fecha_salida}}
+                </div>
+            </ng-template>
+        </div>       
     </div>
-    <h6 class="text-white my-3 mx-2">Series <i class="fas fa-chevron-right"></i></h6>
-        <div class="row d-flex justify-content-center align-items-center mx-2 my-2 h-25">
-        <div class="col my-2" *ngFor='let serie of series'>
-            <div class="card contenedor" style="width: 16rem;">
-                <span class="flecha"><i class="fas fa-chevron-down"></i></span>
-                <img *ngIf='serie.backdrop_path!=null; else elseBlock' src="{{imageUrl}}{{serie.backdrop_path}}" class="card-img-top" alt="">
-                <ng-template #elseBlock> <img src="assets/imagenes/errorImage.png" class="card-img-top" alt=""> </ng-template>
-                <div class="card-body tag" (click)='verSerie(serie.id)'>
-                    <p class="card-title my-1">{{serie.name}}<br>{{serie.first_air_date}}</p>
-                </div>
-                </div>       
-        </div>
     </div>
 </div>

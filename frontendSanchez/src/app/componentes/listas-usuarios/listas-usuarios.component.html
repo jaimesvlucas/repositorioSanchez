@@ -1,0 +1,66 @@
+<div class="container-fluid customBackground my-2">
+  <div class="row my-2">
+    <div class="col-lg-6 col-md-12 pointer" (click)="cambiarPeliculas()" [ngClass]="verPeliculas ? 'border-bottom border-white' : ''"><h4 class="text-white text-center">Peliculas</h4></div>
+    <div class="col-lg-6 col-md-12 pointer" (click)="cambiarSeries()" [ngClass]="verSeries ? 'border-bottom border-white' : ''"><h4 class="text-white text-center">Series</h4></div>
+  </div>
+  <div class="row" id="peliculas" *ngIf='verPeliculas'>
+    <div class="col-lg-12 col-md-12 d-flex flex-row-reverse">
+      <div class="btn-group mr-4">
+        <button type="button" class="btn btn-dark mx-2" (click)="pendientes('pelicula')">Pendiente</button>
+        <button type="button" class="btn btn-dark mx-2" (click)="vistas('pelicula')">Vista</button>
+        <button type="button" class="btn btn-dark mx-2" (click)="misPeliculas()">Todas</button>
+      </div>
+    </div>
+    <div class="col-lg-12 col-md-12">
+      <h6 class="text-white my-3 mx-2">Peliculas Populares <i class="fas fa-chevron-right"></i></h6>
+        <div class="row d-flex justify-content-center align-items-center mx-2 my-2 h-25">
+          <div class="col my-2" *ngFor='let pelicula of peliculas'>
+              <div class="card contenedor" style="width: 16rem;">
+                <div>
+                  <button type="button" class="flecha dropdown-toggle" data-toggle="dropdown"></button>
+                  <div class="dropdown-menu bg-dark  white-text text-center">
+                    <div class="dropdown-item" (click)="aniadirTitulo(pelicula.id,1)">Pendiente</div>
+                    <div class="dropdown-item" (click)="aniadirTitulo(pelicula.id,2)">Vista</div>
+                  </div>
+                </div> 
+                  <img src="{{pelicula.imagen}}" class="card-img-top" alt="">
+                  <div class="card-body tag" (click)='verPelicula(pelicula.id)'>
+                    <p class="card-title my-1 pointer">{{pelicula.titulo}}<br>{{pelicula.fecha_salida}}</p>
+                  </div>
+              </div>       
+          </div>
+        </div> 
+    </div>
+  </div>
+  <div class="row" id="series" *ngIf='verSeries'>
+    <div class="col-lg-12 col-md-12 d-flex flex-row-reverse">
+      <div class="btn-group mr-4">
+        <button type="button" class="btn btn-dark mx-2" (click)="pendientes('serie')">Pendiente</button>
+        <button type="button" class="btn btn-dark mx-2" (click)="vistas('serie')">Vista</button>
+        <button type="button" class="btn btn-dark mx-2" (click)="siguiendo('serie')">Siguiendo</button>
+        <button type="button" class="btn btn-dark mx-2" (click)="misSeries()">Todas</button>
+      </div>
+    </div>
+    <div class="col-lg-12 col-md-12">
+      <h6 class="text-white my-3 mx-2">Series Populares <i class="fas fa-chevron-right"></i></h6>
+        <div class="row d-flex justify-content-center align-items-center mx-2 my-2 h-25">
+          <div class="col my-2" *ngFor='let serie of series'>
+              <div class="card contenedor" style="width: 16rem;">
+                <div>
+                  <button type="button" class="flecha dropdown-toggle" data-toggle="dropdown"></button>
+                  <div class="dropdown-menu bg-dark  white-text text-center">
+                    <div class="dropdown-item" (click)="aniadirTitulo(serie.id,1)">Pendiente</div>
+                    <div class="dropdown-item" (click)="aniadirTitulo(serie.id,3)">Siguiendo</div>
+                    <div class="dropdown-item" (click)="aniadirTitulo(serie.id,2)">Vista</div>
+                  </div>
+                </div> 
+                  <img src="{{serie.imagen}}" class="card-img-top" alt="">
+                  <div class="card-body tag" (click)='verSerie(serie.id)'>
+                    <p class="card-title my-1 pointer">{{serie.titulo}}<br>{{serie.fecha_salida}}</p>
+                  </div>
+                </div>       
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

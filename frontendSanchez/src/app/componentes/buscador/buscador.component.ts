@@ -10,17 +10,65 @@ export class BuscadorComponent implements OnInit {
   imageUrl='https://image.tmdb.org/t/p/w300';
   popularPeliculas:any[]=[];
   popularSeries:any[]=[];
-  mejorValoradaPeliculas:any[]=[];
-  mejorValoradaSeries:any[]=[];
+  netflix:any[]=[];
+  disneyPlus:any[]=[];
+  primeVideo:any[]=[];
+  youtube:any[]=[];
+  hbo:any[]=[];
   constructor(private tmdb:TmdbService, private irHacia:Router) { }
 
   ngOnInit(): void {
-    this.popular('movie');
-    this.popular('tv');
-    this.mejorValorada('movie');
-    this.mejorValorada('tv');
+    this.peliculas();
+    this.series();
+    this.plataforma('Netflix');
+    this.plataforma('Disney+');
+    this.plataforma('Prime video');
+    this.plataforma('Youtube');
+    this.plataforma('HBO');
   }
 
+  peliculas():void{
+    this.tmdb.peliculas().subscribe(
+      respuesta=>{
+        this.popularPeliculas = respuesta;
+      },
+      error=>console.log(error)
+    );
+  }
+
+  series():void{
+    this.tmdb.series().subscribe(
+      respuesta=>{
+        this.popularSeries = respuesta;
+      },
+      error=>console.log(error)
+    );
+  }
+
+  plataforma(plataforma:string):void{
+    this.tmdb.titulosPlataforma(plataforma).subscribe(
+      respuesta=>{
+        switch(plataforma){
+          case 'Netflix':this.netflix=respuesta;break;
+          case 'Disney+':this.disneyPlus=respuesta;break;
+          case 'HBO':this.hbo=respuesta;break;
+          case 'Youtube':this.youtube=respuesta;break;
+          case 'Prime video':this.primeVideo=respuesta;break;
+        }
+      },
+      error=>console.log(error)
+    );
+  }
+
+  aniadirTitulo(id,estado):void{
+    this.tmdb.aniadirTitulo(id,estado).subscribe(
+      respuesta=>{
+        console.log(respuesta);
+      },
+      error=>console.log(error)
+    );
+  }
+  /*
   popular(tipo:string):void{
     this.tmdb.buscarPopulares(tipo).subscribe(
       respuesta=>{
@@ -39,7 +87,7 @@ export class BuscadorComponent implements OnInit {
       },
       error=>console.log(error)
     )
-  }
+  }*/
 
   verPelicula(id):void{
     this.irHacia.navigate(['/buscar/pelicula/'+id])

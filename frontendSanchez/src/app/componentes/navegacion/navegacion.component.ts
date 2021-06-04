@@ -26,5 +26,6 @@ export class NavegacionComponent implements OnInit {
 
   realizarBusqueda():void{
     this.irHacia.navigate(['busqueda/'+this.busqueda]);
+    this.busqueda="";
   }
 }

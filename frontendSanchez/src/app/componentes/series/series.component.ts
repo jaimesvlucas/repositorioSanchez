@@ -10,18 +10,16 @@ import { TmdbService } from 'src/app/servicios/tmdb.service';
 export class SeriesComponent implements OnInit {
   imageUrl='https://image.tmdb.org/t/p/w780';
   serie:any;
-  creditos:any;
   id:string;
   constructor(private tmdb:TmdbService, private rutaActiva: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.id = this.rutaActiva.snapshot.paramMap.get("id");
     this.buscarSerie();
-    this.buscarCreditos();
   }
 
   buscarSerie(){
-    this.tmdb.buscarSerie(this.id).subscribe(
+    this.tmdb.obtener_serie(this.id).subscribe(
       respuesta=>{
         console.log(respuesta)
         this.serie=respuesta;
@@ -30,13 +28,12 @@ export class SeriesComponent implements OnInit {
     )
   }
 
-  buscarCreditos(){
-    this.tmdb.buscarCreditosSeries(this.id).subscribe(
+  aniadirTitulo(id,estado):void{
+    this.tmdb.aniadirTitulo(id,estado).subscribe(
       respuesta=>{
         console.log(respuesta);
-        this.creditos = respuesta;
       },
       error=>console.log(error)
-    )
+    );
   }
 }

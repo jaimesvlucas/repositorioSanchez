@@ -6,15 +6,19 @@
   color: #66fcf1;
 }
 
-.dropdown-menu{
+.dropdown-menu {
   width: 90%;
 }
 
-.dropdown-item{
+.dropdown-item {
   color: white;
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover {
   color: black;
-  background-color:#C5C6C8;
+  background-color: #c5c6c8;
+}
+
+.imagen-nombres {
+  height: 20vh;
 }

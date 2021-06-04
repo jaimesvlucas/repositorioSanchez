@@ -1,0 +1,7 @@
+{
+  "/repositorioSanchez/backendSanchez/*":{
+    "target":"http://localhost:80",
+    "secure":false,
+    "logLevel":"debug"
+  }
+}

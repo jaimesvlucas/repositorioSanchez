@@ -4,6 +4,7 @@
 .customBackground {
   background-color: #202833;
   min-height: 92vh;
+  overflow: hidden;
 }
 .flecha {
   color: white;
@@ -39,16 +40,20 @@
   opacity: 0.9;
 }
 
-.dropdown-item{
+.dropdown-item {
   color: white;
 }
 
-.dropdown-item:hover{
+.dropdown-item:hover {
   color: black;
-  background-color:#C5C6C8;
+  background-color: #c5c6c8;
 }
 
-.dropdown-toggle{
+.dropdown-toggle {
   background-color: transparent;
   border: none;
+}
+
+.pointer {
+  cursor: pointer;
 }

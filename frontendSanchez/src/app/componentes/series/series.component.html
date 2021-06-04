@@ -1,15 +1,14 @@
 <div class="container-fluid customBackground text-white d-flex justify-content-center ">
-  <div class="row mx-2 my-5">
+  <div class="row mx-2 my-3">
     <div class="col-lg-6 col-md-12">
       <div class="container text-center">
-        <img *ngIf='serie.backdrop_path!=null; else elseBlock' src="{{imageUrl}}{{serie.backdrop_path}}" class="my-4 img-fluid" alt="">
-        <ng-template #elseBlock> <img src="assets/imagenes/errorImage.png" class="img-fluid my-4" alt=""> </ng-template>
+        <img src="{{serie[0].imagen}}" class="my-4 img-fluid" alt="">
         <div class="container">
           <button type="button" class="btn btn-dark form-control dropdown-toggle" data-toggle="dropdown">Marcar como</button>
           <div class="dropdown-menu bg-dark  white-text text-center">
-            <div class="dropdown-item">Pendiente</div>
-            <div class="dropdown-item">Siguiendo</div>
-            <div class="dropdown-item">Vista</div>
+            <div class="dropdown-item" (click)="aniadirTitulo(serie[0].id,1)">Pendiente</div>
+            <div class="dropdown-item" (click)="aniadirTitulo(serie[0].id,3)">Siguiendo</div>
+            <div class="dropdown-item" (click)="aniadirTitulo(serie[0].id,2)">Vista</div>
           </div>
         </div> 
       </div>
@@ -18,43 +17,40 @@
       <div class="container">
         <div class="row">
           <div class="col">
-            <h4>{{serie.name}} ({{serie.first_air_date.substring(0,4)}})</h4>
+            <h4>{{serie[0].titulo}} ({{serie[0].fecha_salida.substring(0,4)}})</h4>
+            <h5>{{serie[0].titulo_original}}</h5>
           </div>
         </div>
       </div>
       <div class="container">
-        <h6><span *ngFor='let genero of serie.genres'>{{genero.name}}- </span> {{serie.seasons.length}} temporada(s) en {{serie.networks[0].name}}  </h6>
+        <h6><span *ngFor='let genero of serie["GENEROS"]'>{{genero.descripcion}}- </span> {{serie[0].numero_temporadas}} temporada(s) en {{serie[0].plataforma}}  </h6>
       </div>
       <div class="container my-4">
-        <h5>Puntuacion media: {{serie.vote_average}}<i class="far fa-star colorCustom"></i></h5>
+        <h5>Puntuacion media: {{serie[0].nota}}<i class="far fa-star colorCustom"></i></h5>
       </div>
       <div class="container my-2">
         <h5>Resumen</h5>
-        <p>{{serie.overview}}</p>
+        <p>{{serie[0].argumento}}</p>
       </div>
       <div class="container my-2">
         <div class="row">
-          <div class="col-lg col-md-12">
-            <h5>Dirigida por:</h5>
-            <ul class="list-group list-group-flush">
-              <li style="list-style: none;" *ngFor='let crew of creditos.crew'>
-                <span *ngIf='crew.known_for_department=="Directing"'>{{crew.name}}</span>
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg col-md-12">
-            <h5>Escrita por:</h5>
-            <ul class="list-group list-group-flush">
-              <li style="list-style: none;" *ngFor='let crew of creditos.crew'>
-                <span *ngIf='crew.department=="Writing"'>{{crew.name}}</span>
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg col-md-12">
+          <div class="col-lg-12 col-md-12 mb-2">
             <h5>Actores principales:</h5>
-            <ul class="list-group list-group-flush">
-              <li style="list-style: none;" *ngFor='let i of [0,1,2,3,4,5,6,7,8,9]'>{{creditos.cast[i].original_name}}</li>
-            </ul>
+              <div class="row">
+                <div class="col-lg-3 col-md-6" *ngFor='let actor of serie["ACTORES"]'>
+                  <img class='my-2 img-fluid imagen-nombres' src="{{actor.imagen}}">
+                  <span class="d-block ">{{actor.nombre}}<br>({{actor.fecha_nacimiento.substring(0,4)}})</span>
+                </div>
+              </div>
+          </div>
+          <div class="col-lg-12 col-md-12 mb-2">
+            <h5>Creada por:</h5>
+              <div class="row">
+                <div class="col-lg-3 col-md-6" *ngFor='let creador of serie["CREADORES"]'>
+                  <img class='my-2 img-fluid imagen-nombres' src="{{creador.imagen}}">
+                  <span class="d-block ">{{creador.nombre}}<br>({{creador.fecha_nacimiento.substring(0,4)}})</span>
+                </div>
+              </div>
           </div>
         </div>
       </div>

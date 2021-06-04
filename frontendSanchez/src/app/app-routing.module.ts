@@ -9,6 +9,7 @@ import { RegisterComponent } from './componentes/auth/register/register.componen
 import { PerfilComponent } from './componentes/auth/perfil/perfil.component';
 import { ListasGeneralesComponent } from './componentes/listas-generales/listas-generales.component';
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
+import { ListasUsuariosComponent } from './componentes/listas-usuarios/listas-usuarios.component';
 
 const routes: Routes = [
   {path: "", component:HomeComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: "buscar/pelicula/:id", component:PeliculaComponent},
   {path: "buscar/serie/:id", component:SeriesComponent},
   {path: "busqueda/:query", component:BusquedaComponent},
-  {path: "listar/:tipo/:atributo", component:ListasGeneralesComponent}
+  {path: "listar/:tipo/:atributo", component:ListasGeneralesComponent},
+  {path: "listas/:tipo", component:ListasUsuariosComponent}
 ];
 
 @NgModule({

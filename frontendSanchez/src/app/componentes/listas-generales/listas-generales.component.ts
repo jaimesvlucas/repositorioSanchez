@@ -13,31 +13,47 @@ export class ListasGeneralesComponent implements OnInit {
   imageUrl='https://image.tmdb.org/t/p/w300';
   popularPeliculas:any[]=[];
   popularSeries:any[]=[];
-  mejorValoradaPeliculas:any[]=[];
-  mejorValoradaSeries:any[]=[];
+  netflix:any[]=[];
+  disneyPlus:any[]=[];
+  primeVideo:any[]=[];
+  youtube:any[]=[];
+  hbo:any[]=[];
   constructor(private tmdb:TmdbService, private rutaActiva: ActivatedRoute, private irHacia:Router) { }
 
   ngOnInit(): void {
     this.tipo = this.rutaActiva.snapshot.paramMap.get("tipo");
     this.atributo = this.rutaActiva.snapshot.paramMap.get("atributo");
     switch(this.tipo){
-      case "movie":
+      case "pelicula":
         switch(this.atributo){
           case "popular":
-            this.popular('movie');
-            break;
-          case "mejor":
-            this.mejorValorada('movie');
+            this.peliculas();
             break;
         }
         break;
       case "serie":
         switch(this.atributo){
           case "popular":
-            this.popular('tv');
+            this.series();
             break;
-          case "mejor":
-            this.mejorValorada('tv');
+        }
+        break;
+      case "plataforma":
+        switch(this.atributo){
+          case "Netflix":
+            this.plataforma(this.atributo);
+            break;
+          case "Disney+":
+            this.plataforma(this.atributo);
+            break;
+          case "Prime video":
+            this.plataforma(this.atributo);
+            break;
+          case "HBO":
+            this.plataforma(this.atributo);
+            break;
+          case "Youtube":
+            this.plataforma(this.atributo);
             break;
         }
         break;
@@ -52,6 +68,16 @@ export class ListasGeneralesComponent implements OnInit {
     this.irHacia.navigate(['/buscar/serie/'+id])
   }
 
+  aniadirTitulo(id,estado):void{
+    this.tmdb.aniadirTitulo(id,estado).subscribe(
+      respuesta=>{
+        console.log(respuesta);
+      },
+      error=>console.log(error)
+    );
+  }
+  
+  /*
   popular(tipo:string):void{
     this.tmdb.buscarPopulares(tipo).subscribe(
       respuesta=>{
@@ -72,5 +98,39 @@ export class ListasGeneralesComponent implements OnInit {
       },
       error=>console.log(error)
     )
+  }*/
+
+  peliculas():void{
+    this.tmdb.peliculas().subscribe(
+      respuesta=>{
+        this.popularPeliculas = respuesta;
+      },
+      error=>console.log(error)
+    );
   }
+
+  series():void{
+    this.tmdb.series().subscribe(
+      respuesta=>{
+        this.popularSeries = respuesta;
+      },
+      error=>console.log(error)
+    );
+  }
+
+  plataforma(plataforma:string):void{
+    this.tmdb.titulosPlataforma(plataforma).subscribe(
+      respuesta=>{
+        switch(plataforma){
+          case 'Netflix':this.netflix=respuesta;break;
+          case 'Disney+':this.disneyPlus=respuesta;break;
+          case 'HBO':this.hbo=respuesta;break;
+          case 'Youtube':this.youtube=respuesta;break;
+          case 'Prime video':this.primeVideo=respuesta;break;
+        }
+      },
+      error=>console.log(error)
+    );
+  }
+
 }

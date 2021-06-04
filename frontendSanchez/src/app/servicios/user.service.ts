@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User, AccesoUsuario } from '../Clases/user';
 
-const url = 'http://localhost/repositorioSanchez/backendSanchez/user/';
+const url = 'apiSanchez/';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,23 +12,23 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
   registrar(usuario: User):Observable<any>{
-    return this.http.post(url,usuario);
+    return this.http.post(url+'registrar',usuario);
   }
   
   acceso(usuario:AccesoUsuario):Observable<any>{
-    return this.http.post(url+'login/', usuario);
+    return this.http.post(url+'login', usuario);
   }
 
   obtenerPerfil():Observable<any>{
-    return this.http.get(url)
+    return this.http.get(url+'leerPerfil')
   }
 
   editarPerfil(usuario:User):Observable<any>{
-    return this.http.put(url,usuario);
+    return this.http.post(url+'editarPerfil',usuario);
   }
 
   eliminarPerfil():Observable<any>{
-    return this.http.delete(url);
+    return this.http.get(url+'eliminarPerfil');
   }
 
   listarUsuarios():Observable<any>{
@@ -36,7 +36,7 @@ export class UserService {
   }
 
   subirImagen(entrada): Observable<any>{
-    return this.http.post(url+'image/', entrada) 
+    return this.http.post(url+'subirImagen', entrada) 
   }
 
   guardarToken(token:string):void{

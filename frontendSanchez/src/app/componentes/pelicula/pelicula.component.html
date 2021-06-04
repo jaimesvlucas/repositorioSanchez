@@ -1,14 +1,13 @@
 <div class="container-fluid customBackground text-white d-flex justify-content-center ">
-  <div class="row mx-2 my-5">
+  <div class="row mx-2 my-3">
     <div class="col-lg-6 col-md-12">
       <div class="container text-center">
-        <img *ngIf='pelicula.backdrop_path!=null; else elseBlock' class='my-4 img-fluid' src="{{imageUrl}}{{pelicula.backdrop_path}}" alt="">
-        <ng-template #elseBlock> <img src="assets/imagenes/errorImage.png" class="img-fluid my-4" alt=""> </ng-template>
+        <img class='my-4 img-fluid border border-white' src="{{pelicula[0].imagen}}" alt="">
         <div class="container">
           <button type="button" class="btn btn-dark form-control dropdown-toggle" data-toggle="dropdown">Marcar como</button>
           <div class="dropdown-menu bg-dark  white-text text-center">
-            <div class="dropdown-item">Pendiente</div>
-            <div class="dropdown-item">Vista</div>
+            <div class="dropdown-item" (click)="aniadirTitulo(pelicula[0].id,1)">Pendiente</div>
+            <div class="dropdown-item" (click)="aniadirTitulo(pelicula[0].id,2)">Vista</div>
           </div>
         </div> 
       </div>
@@ -17,48 +16,49 @@
       <div class="container">
         <div class="row">
           <div class="col">
-            <h4>{{pelicula.title}} ({{pelicula.release_date.substring(0,4)}})</h4>
+            <h4>{{pelicula[0].titulo}} ({{pelicula[0].fecha_salida.substring(0,4)}})</h4>
+            <h5>{{pelicula[0].titulo_original}}</h5>
           </div>
         </div>
       </div>
       <div class="container">
-        <h6><span *ngFor='let genero of pelicula.genres'>{{genero.name}} - </span> {{pelicula.runtime | minutosHoras}}</h6>
+        <h6><span *ngFor='let genero of pelicula["GENEROS"]'>{{genero.descripcion}} - </span> {{pelicula[0].minutos | minutosHoras}}</h6>
       </div>
       <div class="container my-4">
-        <h6>Puntuacion media: {{pelicula.vote_average}}<i class="far fa-star colorCustom"></i></h6>
+        <h6>Puntuacion media: {{pelicula[0].nota}}<i class="far fa-star colorCustom"></i></h6>
       </div>
       <div class="container my-2">
         <h6>Resumen</h6>
-        <p>{{pelicula.overview}}</p>
+        <p>{{pelicula[0].argumento}}</p>
       </div>
       <div class="container my-2">
         <div class="row">
-          <div class="col-lg col-md-12 mb-2">
-            <h5>Dirigida por:</h5>
-            <ul class="list-group list-group-flush">
-              <li style="list-style: none;" *ngFor='let crew of creditos.crew'>
-                <span *ngIf='crew.job=="Director"'>{{crew.name}}</span>
-              </li>
-            </ul>
-            <br>
-            <h5>Escrita por:</h5>
-            <ul class="list-group list-group-flush">
-              <li style="list-style: none;" *ngFor='let crew of creditos.crew'>
-                <span *ngIf='crew.department=="Writing"'>{{crew.name}}</span>
-              </li>
-            </ul>
+          <div class="col-lg-12 col-md-12 mb-2">
+            <div class="row">
+              <div class="col-lg-3 col-md-12">
+                <h5>Dirigida por:</h5>
+                <img class='my-2 img-fluid imagen-nombres' src="{{pelicula['DIRECTORES'][0].imagen}}">
+                <span class="d-block ">{{pelicula['DIRECTORES'][0].nombre}}<br>({{pelicula['DIRECTORES'][0].fecha_nacimiento.substring(0,4)}})</span>
+              </div>
+              <div class="col-lg-9 col-md-12">
+                <h5>Escrita por:</h5>
+                <div class="row">
+                  <div class="col-lg-4 col-md-6" *ngFor='let escritor of pelicula["ESCRITORES"]'>
+                    <img class='my-2 img-fluid imagen-nombres' src="{{escritor.imagen}}">
+                    <span class="d-block ">{{escritor.nombre}}<br>({{escritor.fecha_nacimiento.substring(0,4)}})</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-lg col-md-12 mb-2">
+          <div class="col-lg-12 col-md-12 mb-2">
             <h5>Actores principales:</h5>
-            <ul class="list-group list-group-flush">
-              <li style="list-style: none;" *ngFor='let i of [0,1,2,3,4,5,6,7,8,9]'>{{creditos.cast[i].original_name}}</li>
-            </ul>
-          </div>
-          <div class="col-lg col-md-12 mb-2">
-            <h5>Productoras:</h5>
-            <ul class="list-group list-group-flush">
-              <li style="list-style: none;" *ngFor='let productora of pelicula.production_companies'>{{productora.name}}</li>
-            </ul>
+              <div class="row">
+                <div class="col-lg-3 col-md-6" *ngFor='let actor of pelicula["ACTORES"]'>
+                  <img class='my-2 img-fluid imagen-nombres' src="{{actor.imagen}}">
+                  <span class="d-block ">{{actor.nombre}}<br>({{actor.fecha_nacimiento.substring(0,4)}})</span>
+                </div>
+              </div>
           </div>
         </div>
       </div>

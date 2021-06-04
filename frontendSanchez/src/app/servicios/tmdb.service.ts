@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-const url = 'https://api.themoviedb.org/3/';
-const api = '?api_key=8d16caf7eddcb9dc523bd8c85ba93a25';
+const url = 'repositorioSanchez/backendSanchez';
+const api='';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,25 +10,53 @@ export class TmdbService {
 
   constructor(private http:HttpClient) { }
 
-  buscarPopulares(tipo:string):Observable<any>{
-    return this.http.get(url+tipo+'/popular'+api+'&language=es');
+  peliculas():Observable<any>{
+    return this.http.get(url+'/peliculas');
   }
-  buscarMejorValoradas(tipo:string):Observable<any>{
-    return this.http.get(url+tipo+'/top_rated'+api+'&language=es');
+
+  series():Observable<any>{
+    return this.http.get(url+'/series');
   }
-  buscarPelicula(id):Observable<any>{
-    return this.http.get(url+'movie/'+id+api+'&language=es');
+
+  titulosPlataforma(plataforma:string):Observable<any>{
+    return this.http.post(url+'/plataforma',{ PLATAFORMA: plataforma });
   }
-  buscarCreditosPeliculas(id):Observable<any>{
-    return this.http.get(url+'movie/'+id+'/credits'+api+'&language=es');
+  
+  obtener_pelicula(id):Observable<any>{
+    return this.http.post(url+'/pelicula',{ ID: id });
   }
-  buscarSerie(id):Observable<any>{
-    return this.http.get(url+'tv/'+id+api+'&language=es'); 
+
+  obtener_serie(id):Observable<any>{
+    return this.http.post(url+'/serie',{ ID: id });
   }
-  buscarCreditosSeries(id):Observable<any>{
-    return this.http.get(url+'tv/'+id+'/credits'+api+'&language=es');
+
+  cargarBusqueda(query:string):Observable<any>{
+    return this.http.post(url+'/busqueda',{QUERY: query});
   }
-  realizarBusqueda(busqueda,tipo):Observable<any>{
-    return this.http.get(url+'search/'+tipo+api+'&language=es&query='+busqueda);
+
+  aniadirTitulo(id,estado):Observable<any>{
+    var datos={ID:id,ESTADO:estado};
+    return this.http.post(url+'/aniadirTitulo',datos);
   }
+
+  listaPeliculas():Observable<any>{
+    return this.http.get(url+'/listaPeliculas');
+  }
+
+  listaSeries():Observable<any>{
+    return this.http.get(url+'/listaSeries');
+  }
+
+  pendientes(tipo):Observable<any>{
+    return this.http.post(url+'/pendientes',{TIPO: tipo});
+  }
+
+  vistas(tipo):Observable<any>{
+    return this.http.post(url+'/vistas',{TIPO: tipo});
+  }
+
+  siguiendo():Observable<any>{
+    return this.http.get(url+'/siguiendo');
+  }
+
 }
