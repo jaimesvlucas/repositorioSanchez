@@ -10,6 +10,7 @@ import { PerfilComponent } from './componentes/auth/perfil/perfil.component';
 import { ListasGeneralesComponent } from './componentes/listas-generales/listas-generales.component';
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
 import { ListasUsuariosComponent } from './componentes/listas-usuarios/listas-usuarios.component';
+import { SobreMiComponent } from './componentes/sobre-mi/sobre-mi.component';
 
 const routes: Routes = [
   {path: "", component:HomeComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: "buscar/serie/:id", component:SeriesComponent},
   {path: "busqueda/:query", component:BusquedaComponent},
   {path: "listar/:tipo/:atributo", component:ListasGeneralesComponent},
-  {path: "listas/:tipo", component:ListasUsuariosComponent}
+  {path: "listas/:tipo", component:ListasUsuariosComponent},
+  {path: "sobreMi", component:SobreMiComponent}
 ];
 
 @NgModule({

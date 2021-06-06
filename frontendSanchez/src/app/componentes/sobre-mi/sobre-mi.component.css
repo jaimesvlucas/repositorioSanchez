@@ -1,0 +1,9 @@
+@import "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css";
+
+.separador {
+  border-bottom: 1px solid black;
+}
+
+.fondo-blanco {
+  background-color: white;
+}

@@ -17,6 +17,7 @@ import { EnviarTokenInterceptor } from './auth/enviar-token.interceptor';
 import { ListasGeneralesComponent } from './componentes/listas-generales/listas-generales.component';
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
 import { ListasUsuariosComponent } from './componentes/listas-usuarios/listas-usuarios.component';
+import { SobreMiComponent } from './componentes/sobre-mi/sobre-mi.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ListasUsuariosComponent } from './componentes/listas-usuarios/listas-us
     PerfilComponent,
     ListasGeneralesComponent,
     BusquedaComponent,
-    ListasUsuariosComponent
+    ListasUsuariosComponent,
+    SobreMiComponent
   ],
   imports: [
     BrowserModule,
