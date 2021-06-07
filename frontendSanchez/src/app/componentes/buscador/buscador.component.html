@@ -10,10 +10,10 @@
                     <div class="dropdown-item" (click)="aniadirTitulo(popularPeliculas[i].id,2)">Vista</div>
                   </div>
                 </div> 
-                <img src="{{popularPeliculas[i].imagen}}" class="card-img-top" alt="">
+                <img src="{{popularPeliculas[i]?.imagen}}" class="card-img-top" alt="">
                 <div class="card-body tag" (click)='verPelicula(popularPeliculas[i].id)'>
-                  <p class="card-title my-1 pointer">{{popularPeliculas[i].titulo}}<br>{{popularPeliculas[i].fecha_salida}}
-                    <span class="nota"><i class="far fa-star"></i>{{popularPeliculas[i].nota}}</span></p>
+                  <p class="card-title my-1 pointer">{{popularPeliculas[i]?.titulo}}<br>{{popularPeliculas[i]?.fecha_salida}}
+                    <span class="nota"><i class="far fa-star"></i>{{popularPeliculas[i]?.nota}}</span></p>
                 </div>
               </div>       
         </div>
@@ -31,10 +31,10 @@
                 <div class="dropdown-item" (click)="aniadirTitulo(popularSeries[i].id,2)">Vista</div>
               </div>
             </div> 
-              <img src="{{popularSeries[i].imagen}}" class="card-img-top" alt="">
+              <img src="{{popularSeries[i]?.imagen}}" class="card-img-top" alt="">
               <div class="card-body tag" (click)='verSerie(popularSeries[i].id)'>
-                <p class="card-title my-1 pointer">{{popularSeries[i].titulo}}<br>{{popularSeries[i].fecha_salida}}
-                  <span class="nota"><i class="far fa-star"></i>{{popularSeries[i].nota}}</span></p>
+                <p class="card-title my-1 pointer">{{popularSeries[i]?.titulo}}<br>{{popularSeries[i]?.fecha_salida}}
+                  <span class="nota"><i class="far fa-star"></i>{{popularSeries[i]?.nota}}</span></p>
               </div>
             </div>       
       </div>
@@ -44,7 +44,7 @@
     <div class="row d-flex justify-content-center align-items-center mx-2 my-2">
       <div class="col my-2" *ngFor='let i of [0,1,2,3,4]'>
           <div class="card contenedor" style="width: 16rem;">
-            <div *ngIf="netflix[i].tipo=='pelicula'; else elseBlock1">
+            <div *ngIf="netflix[i]?.tipo=='pelicula'; else elseBlock1">
               <button type="button" class="flecha dropdown-toggle" data-toggle="dropdown"></button>
               <div class="dropdown-menu bg-dark  white-text text-center">
                 <div class="dropdown-item" (click)="aniadirTitulo(netflix[i].id,1)">Pendiente</div>
@@ -61,15 +61,15 @@
                 </div>
               </div> 
           </ng-template>
-              <img src="{{netflix[i].imagen}}" class="card-img-top" alt="">
-              <div class="card-body tag" (click)='verPelicula(netflix[i].id)' *ngIf="netflix[i].tipo=='pelicula'; else elseBlock2">
-                <p class="card-title my-1 pointer">{{netflix[i].titulo}}<br>{{netflix[i].fecha_salida}}
-                  <span class="nota"><i class="far fa-star"></i>{{netflix[i].nota}}</span></p>
+              <img src="{{netflix[i]?.imagen}}" class="card-img-top" alt="">
+              <div class="card-body tag" (click)='verPelicula(netflix[i].id)' *ngIf="netflix[i]?.tipo=='pelicula'; else elseBlock2">
+                <p class="card-title my-1 pointer">{{netflix[i]?.titulo}}<br>{{netflix[i]?.fecha_salida}}
+                  <span class="nota"><i class="far fa-star"></i>{{netflix[i]?.nota}}</span></p>
               </div>
               <ng-template #elseBlock2>
                 <div class="card-body tag" (click)='verSerie(disneyPlus[i].id)'>
-                  <p class="card-title my-1 pointer">{{netflix[i].titulo}}<br>{{netflix[i].fecha_salida}}
-                    <span class="nota"><i class="far fa-star"></i>{{netflix[i].nota}}</span></p>
+                  <p class="card-title my-1 pointer">{{netflix[i]?.titulo}}<br>{{netflix[i]?.fecha_salida}}
+                    <span class="nota"><i class="far fa-star"></i>{{netflix[i]?.nota}}</span></p>
                 </div>
               </ng-template>
             </div>       
@@ -80,7 +80,7 @@
     <div class="row d-flex justify-content-center align-items-center mx-2 my-2">
       <div class="col my-2" *ngFor='let i of [0,1,2,3,4]'>
           <div class="card contenedor" style="width: 16rem;">
-            <div *ngIf="disneyPlus[i].tipo=='pelicula'; else elseBlock">
+            <div *ngIf="disneyPlus[i]?.tipo=='pelicula'; else elseBlock">
               <button type="button" class="flecha dropdown-toggle" data-toggle="dropdown"></button>
               <div class="dropdown-menu bg-dark  white-text text-center">
                 <div class="dropdown-item" (click)="aniadirTitulo(disneyPlus[i].id,1)">Pendiente</div>
@@ -97,15 +97,15 @@
                 </div>
               </div> 
           </ng-template>
-              <img src="{{disneyPlus[i].imagen}}" class="card-img-top" alt="">
-              <div class="card-body tag" (click)='verPelicula(disneyPlus[i].id)' *ngIf="disneyPlus[i].tipo=='pelicula'; else elseBlock2">
-                <p class="card-title my-1 pointer">{{disneyPlus[i].titulo}}<br>{{disneyPlus[i].fecha_salida}}
-                  <span class="nota"><i class="far fa-star"></i>{{disneyPlus[i].nota}}</span></p>
+              <img src="{{disneyPlus[i]?.imagen}}" class="card-img-top" alt="">
+              <div class="card-body tag" (click)='verPelicula(disneyPlus[i].id)' *ngIf="disneyPlus[i]?.tipo=='pelicula'; else elseBlock2">
+                <p class="card-title my-1 pointer">{{disneyPlus[i]?.titulo}}<br>{{disneyPlus[i]?.fecha_salida}}
+                  <span class="nota"><i class="far fa-star"></i>{{disneyPlus[i]?.nota}}</span></p>
               </div>
               <ng-template #elseBlock2>
                 <div class="card-body tag" (click)='verSerie(disneyPlus[i].id)'>
-                  <p class="card-title my-1 pointer">{{disneyPlus[i].titulo}}<br>{{disneyPlus[i].fecha_salida}}
-                    <span class="nota"><i class="far fa-star"></i>{{disneyPlus[i].nota}}</span></p>
+                  <p class="card-title my-1 pointer">{{disneyPlus[i]?.titulo}}<br>{{disneyPlus[i]?.fecha_salida}}
+                    <span class="nota"><i class="far fa-star"></i>{{disneyPlus[i]?.nota}}</span></p>
                 </div>
               </ng-template>
             </div>       
@@ -116,7 +116,7 @@
     <div class="row d-flex justify-content-center align-items-center mx-2 my-2">
       <div class="col my-2" *ngFor='let i of [0,1,2,3,4]'>
           <div class="card contenedor" style="width: 16rem;">
-            <div *ngIf="primeVideo[i].tipo=='pelicula'; else elseBlock">
+            <div *ngIf="primeVideo[i]?.tipo=='pelicula'; else elseBlock">
               <button type="button" class="flecha dropdown-toggle" data-toggle="dropdown"></button>
               <div class="dropdown-menu bg-dark  white-text text-center">
                 <div class="dropdown-item" (click)="aniadirTitulo(primeVideo[i].id,1)">Pendiente</div>
@@ -133,15 +133,15 @@
                 </div>
               </div> 
           </ng-template>
-              <img src="{{primeVideo[i].imagen}}" class="card-img-top" alt="">
-              <div class="card-body tag" (click)='verPelicula(primeVideo[i].id)' *ngIf="primeVideo[i].tipo=='pelicula'; else elseBlock2">
-                <p class="card-title my-1 pointer">{{primeVideo[i].titulo}}<br>{{primeVideo[i].fecha_salida}}
-                  <span class="nota"><i class="far fa-star"></i>{{primeVideo[i].nota}}</span></p>
+              <img src="{{primeVideo[i]?.imagen}}" class="card-img-top" alt="">
+              <div class="card-body tag" (click)='verPelicula(primeVideo[i].id)' *ngIf="primeVideo[i]?.tipo=='pelicula'; else elseBlock2">
+                <p class="card-title my-1 pointer">{{primeVideo[i]?.titulo}}<br>{{primeVideo[i]?.fecha_salida}}
+                  <span class="nota"><i class="far fa-star"></i>{{primeVideo[i]?.nota}}</span></p>
               </div>
               <ng-template #elseBlock2>
                 <div class="card-body tag" (click)='verSerie(primeVideo[i].id)'>
-                  <p class="card-title my-1 pointer">{{primeVideo[i].titulo}}<br>{{primeVideo[i].fecha_salida}}
-                    <span class="nota"><i class="far fa-star"></i>{{primeVideo[i].nota}}</span></p>
+                  <p class="card-title my-1 pointer">{{primeVideo[i]?.titulo}}<br>{{primeVideo[i]?.fecha_salida}}
+                    <span class="nota"><i class="far fa-star"></i>{{primeVideo[i]?.nota}}</span></p>
                 </div>
               </ng-template>
             </div>       
@@ -152,7 +152,7 @@
     <div class="row d-flex justify-content-center align-items-center mx-2 my-2">
       <div class="col my-2" *ngFor='let i of [0,1,2,3,4]'>
           <div class="card contenedor" style="width: 16rem;">
-            <div *ngIf="hbo[i].tipo=='pelicula'; else elseBlock">
+            <div *ngIf="hbo[i]?.tipo=='pelicula'; else elseBlock">
               <button type="button" class="flecha dropdown-toggle" data-toggle="dropdown"></button>
               <div class="dropdown-menu bg-dark  white-text text-center">
                 <div class="dropdown-item" (click)="aniadirTitulo(hbo[i].id,1)">Pendiente</div>
@@ -169,15 +169,15 @@
                 </div>
               </div> 
           </ng-template>
-              <img src="{{hbo[i].imagen}}" class="card-img-top" alt="">
-              <div class="card-body tag" (click)='verPelicula(hbo[i].id)' *ngIf="hbo[i].tipo=='pelicula'; else elseBlock2">
-                <p class="card-title my-1 pointer">{{hbo[i].titulo}}<br>{{hbo[i].fecha_salida}}
-                  <span class="nota"><i class="far fa-star"></i>{{hbo[i].nota}}</span></p>
+              <img src="{{hbo[i]?.imagen}}" class="card-img-top" alt="">
+              <div class="card-body tag" (click)='verPelicula(hbo[i].id)' *ngIf="hbo[i]?.tipo=='pelicula'; else elseBlock2">
+                <p class="card-title my-1 pointer">{{hbo[i]?.titulo}}<br>{{hbo[i]?.fecha_salida}}
+                  <span class="nota"><i class="far fa-star"></i>{{hbo[i]?.nota}}</span></p>
               </div>
               <ng-template #elseBlock2>
                 <div class="card-body tag" (click)='verSerie(hbo[i].id)'>
-                  <p class="card-title my-1 pointer">{{hbo[i].titulo}}<br>{{hbo[i].fecha_salida}}
-                    <span class="nota"><i class="far fa-star"></i>{{hbo[i].nota}}</span></p>
+                  <p class="card-title my-1 pointer">{{hbo[i]?.titulo}}<br>{{hbo[i]?.fecha_salida}}
+                    <span class="nota"><i class="far fa-star"></i>{{hbo[i]?.nota}}</span></p>
                 </div>
               </ng-template>
             </div>       
@@ -188,7 +188,7 @@
     <div class="row d-flex justify-content-center align-items-center mx-2 my-2">
       <div class="col my-2" *ngFor='let i of [0,1,2,3,4]'>
           <div class="card contenedor" style="width: 16rem;">
-            <div *ngIf="youtube[i].tipo=='pelicula'; else elseBlock">
+            <div *ngIf="youtube[i]?.tipo=='pelicula'; else elseBlock">
               <button type="button" class="flecha dropdown-toggle" data-toggle="dropdown"></button>
               <div class="dropdown-menu bg-dark  white-text text-center">
                 <div class="dropdown-item" (click)="aniadirTitulo(youtube[i].id,1)">Pendiente</div>
@@ -205,15 +205,15 @@
                 </div>
               </div> 
           </ng-template>
-              <img src="{{youtube[i].imagen}}" class="card-img-top" alt="">
-              <div class="card-body tag" (click)='verPelicula(youtube[i].id)' *ngIf="youtube[i].tipo=='pelicula'; else elseBlock2">
-                <p class="card-title my-1 pointer">{{youtube[i].titulo}}<br>{{youtube[i].fecha_salida}}
-                  <span class="nota"><i class="far fa-star"></i>{{youtube[i].nota}}</span></p>
+              <img src="{{youtube[i]?.imagen}}" class="card-img-top" alt="">
+              <div class="card-body tag" (click)='verPelicula(youtube[i].id)' *ngIf="youtube[i]?.tipo=='pelicula'; else elseBlock2">
+                <p class="card-title my-1 pointer">{{youtube[i]?.titulo}}<br>{{youtube[i]?.fecha_salida}}
+                  <span class="nota"><i class="far fa-star"></i>{{youtube[i]?.nota}}</span></p>
               </div>
               <ng-template #elseBlock2>
                 <div class="card-body tag" (click)='verSerie(youtube[i].id)'>
-                  <p class="card-title my-1 pointer">{{youtube[i].titulo}}<br>{{youtube[i].fecha_salida}}
-                    <span class="nota"><i class="far fa-star"></i>{{youtube[i].nota}}</span></p>
+                  <p class="card-title my-1 pointer">{{youtube[i]?.titulo}}<br>{{youtube[i]?.fecha_salida}}
+                    <span class="nota"><i class="far fa-star"></i>{{youtube[i]?.nota}}</span></p>
                 </div>
               </ng-template>
             </div>       
