@@ -47,6 +47,7 @@ $mapa = array(
     'pendientes' => array('controlador'=>'ControladorTitulos','metodo'=>'pendientes', 'publica' => true),
     'vistas' => array('controlador'=>'ControladorTitulos','metodo'=>'vistas', 'publica' => true),
     'siguiendo' => array('controlador'=>'ControladorTitulos','metodo'=>'siguiendo', 'publica' => true),
+    'borrarTituloLista' => array('controlador'=>'ControladorTitulos','metodo'=>'borrarTituloLista', 'publica' => true),
     );
 
 //Parseo de la ruta

@@ -13,6 +13,8 @@ export class ListasUsuariosComponent implements OnInit {
   series:any[]=[];
   verPeliculas:boolean=true;
   verSeries:boolean=false;
+  mensaje:string;
+  respuestaCreada:boolean=false;
 
   constructor(private tmdb:TmdbService, private irHacia:Router) { }
 
@@ -95,6 +97,27 @@ export class ListasUsuariosComponent implements OnInit {
     this.verPeliculas=true;
     this.verSeries=false;
     this.misPeliculas();
+  }
+
+  borrarTituloLista(id, tipo){
+    this.tmdb.borrarTituloLista(id).subscribe(
+      respuesta=>{
+        if(respuesta=='ok'){
+          if(tipo=='pelicula'){
+            this.misPeliculas();
+            this.mensaje='Pelicula borrada';
+            this.respuestaCreada=true;
+            setTimeout(()=>{this.respuestaCreada=false;this.mensaje=''},3000);
+          }else{
+            this.misSeries();
+            this.mensaje='Serie borrada';
+            this.respuestaCreada=true;
+            setTimeout(()=>{this.respuestaCreada=false;this.mensaje=''},3000);
+          }
+        }
+      },
+      error=>console.log(error)
+    );
   }
 
 }

@@ -111,4 +111,13 @@ class ControladorTitulos {
         $result = $titulos->siguiendo();
         echo json_encode($result);
     }
+
+    function borrarTituloLista(){
+        $conn = Conexion::conectar();
+        $titulos = new Titulos($conn);
+        $params = json_decode(file_get_contents('php://input'),true);
+        $id=$params['ID'];
+        $result = $titulos->borrarTituloLista($id);
+        echo json_encode($result);
+    }
 }

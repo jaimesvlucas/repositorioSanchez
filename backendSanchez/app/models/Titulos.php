@@ -419,4 +419,15 @@ class Titulos {
         $resultados = $sqlSeries->fetch_all(MYSQLI_ASSOC);
         return $resultados;
     }
+
+    function borrarTituloLista($id){
+        $conn = $this->conn;
+        $resultado='';
+        if(!$sqlSeries = $conn->query("DELETE FROM listas_usuarios WHERE usuario_id=".IDUSER." AND titulo_id=$id")){
+            die("Error en la sql: " . $this->conn->error);
+        }else{
+            $resultado='ok';
+        }
+        return $resultado;
+    }
 }

@@ -59,4 +59,8 @@ export class TmdbService {
     return this.http.get(url+'/siguiendo');
   }
 
+  borrarTituloLista(id):Observable<any>{
+    return this.http.post(url+'/borrarTituloLista',{ ID: id });
+  }
+
 }
