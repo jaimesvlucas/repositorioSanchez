@@ -18,12 +18,12 @@
         <strong>Introduce los valores en el Formulario</strong>
       </div>
       <div class="alert alert-danger mt-1" role="alert" *ngIf="formRegister.invalid && formRegister.touched">
-        <p>Nombre: {{formRegister.get('nombre').errors | json}}</p>
-        <p>Apellidos: {{formRegister.get('apellidos').errors | json}}</p>
-        <p>DNI: {{formRegister.get('dni').errors | json}}</p>
-        <p>Teléfono: {{formRegister.get('telefono').errors | json}}</p>
-        <p>E-Mail: {{formRegister.get('email').errors | json}}</p>
-        <p>Contraseña: {{formRegister.get('password').errors | json}}</p>
+        <p *ngIf="formRegister.get('nombre').errors!=null">Nombre: {{formRegister.get('nombre').errors | json}}</p>
+        <p *ngIf="formRegister.get('apellidos').errors!=null">Apellidos: {{formRegister.get('apellidos').errors | json}}</p>
+        <p *ngIf="formRegister.get('dni').errors!=null">DNI: {{formRegister.get('dni').errors | json}}</p>
+        <p *ngIf="formRegister.get('telefono').errors!=null">Teléfono: {{formRegister.get('telefono').errors | json}}</p>
+        <p *ngIf="formRegister.get('email').errors!=null">E-Mail: {{formRegister.get('email').errors | json}}</p>
+        <p *ngIf="formRegister.get('password').errors!=null">Contraseña: {{formRegister.get('password').errors | json}}</p>
       </div>
       <div class="alert alert-success mt-1" role="alert" *ngIf="formRegister.valid">
         <strong>El formulario es valido</strong>

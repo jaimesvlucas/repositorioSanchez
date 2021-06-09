@@ -10,6 +10,7 @@ import { dniValido, telfonoValido } from 'src/app/validaciones/usuarios';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   formRegister = this.fb.group({
     nombre:[''],
     apellidos:[''],
