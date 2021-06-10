@@ -67,7 +67,7 @@
                   <span class="nota"><i class="far fa-star"></i>{{netflix[i]?.nota}}</span></p>
               </div>
               <ng-template #elseBlock2>
-                <div class="card-body tag" (click)='verSerie(disneyPlus[i].id)'>
+                <div class="card-body tag" (click)='verSerie(netflix[i].id)'>
                   <p class="card-title my-1 pointer">{{netflix[i]?.titulo}}<br>{{netflix[i]?.fecha_salida}}
                     <span class="nota"><i class="far fa-star"></i>{{netflix[i]?.nota}}</span></p>
                 </div>
